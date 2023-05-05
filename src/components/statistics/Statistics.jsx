@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import css from './Statistics.module.css';
+import { Numbers, Category } from './Statistics.styled';
 
 // Компонент відображення статистики
 export const Statistics = ({
@@ -12,20 +12,18 @@ export const Statistics = ({
     <>
       {options.map((name, i) => {
         return (
-          // назва елемента статистики
-          <p key={i} className={css[name]}>
-            {name}:{/* значення з statistic */}
-            <span className={css.numbers}>{statistic[name]}</span>
-          </p>
+          <Category key={i + 1} categoryName={name}>
+            {name}: <Numbers>{statistic[name]}</Numbers>
+          </Category>
         );
       })}
       <p>
-        Total: <span className={css.numbers}>{total}</span>
+        Total: <Numbers>{total}</Numbers> {/* рендер загальної кількості */}
       </p>
-      <p className={css.good}>
-        Positive feedback:{' '}
-        <span className={css.numbers}>{positivePercentage()}</span> <b>%</b>
-      </p>
+      <Category categoryName={'good'}>
+        Positive feedback: <Numbers>{positivePercentage()}</Numbers>%{' '}
+        {/* рендер відсотка */}
+      </Category>
     </>
   );
 };
