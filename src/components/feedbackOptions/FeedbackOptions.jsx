@@ -11,7 +11,19 @@ export const FeedbackOptions = ({ onLeaveFeedback, options }) => {
             className={css[name]}
             // При кліку виклик функції яка передає назву відгуку як аргумент
             onClick={() => {
-              onLeaveFeedback(name);
+              switch (name) {
+                case 'good':
+                  onLeaveFeedback('good');
+                  break;
+                case 'neutral':
+                  onLeaveFeedback('neutral');
+                  break;
+                case 'bad':
+                  onLeaveFeedback('bad');
+                  break;
+                default:
+                  break;
+              }
             }}
           >
             {name}
