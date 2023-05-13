@@ -23,7 +23,7 @@ export const App = () => {
 
   // підрахунок відсотка позитивних відгуків
   const countPositiveFeedbackPercentage = () => {
-    return Math.floor((good / (good + neutral + bad)) * 100 || 0);
+    return Math.floor((good / countTotalFeedback()) * 100 || 0);
   };
 
   return (
